@@ -1,0 +1,17 @@
+version: "3.7"
+
+
+networks:
+    default:
+      name: quote
+
+services:
+    go-psql-play:
+        container_name: "go-psql-play"
+        build:
+            context: .
+        volumes:
+            - .:/srv/project
+        working_dir: /srv/project
+        restart: always
+        command: tail -f /dev/null
