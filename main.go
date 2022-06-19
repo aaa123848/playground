@@ -2,15 +2,42 @@ package main
 
 import (
 	"log"
-	"math"
+	"time"
 )
 
-var (
-	a uint
-	c uint
-)
+func a() {
+	for {
+		log.Println(1)
+		time.Sleep(time.Second)
+	}
+}
+
+func b() {
+	go a()
+}
+
+func c() {
+	go func() {
+		for {
+			log.Println(2)
+			time.Sleep(time.Second)
+		}
+	}()
+}
 
 func main() {
-	log.Println(math.Pow(3, 2))
+	a := 1
+
+	ap := &a
+
+	c := *ap
+
+	log.Println(c)
+
+	*ap = 3
+
+	log.Println(a)
+	log.Println(*ap)
+	log.Println(c)
 
 }

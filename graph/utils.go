@@ -84,3 +84,24 @@ func CreateGraphArr(nodNum int) [][]int {
 func AddEdgeArr(graph [][]int, from, to int) {
 	graph[from] = append(graph[from], to)
 }
+
+type Que []int
+
+func InitQue() Que {
+	return make(Que, 0)
+}
+
+func (q *Que) Insert(i int) {
+	*q = append(*q, i)
+}
+
+func (q *Que) Pop() (int, bool) {
+	qv := *q
+	if len(qv) < 1 {
+		return 0, false
+	}
+	num := qv[0]
+	newQ := qv[1:]
+	*q = newQ
+	return num, true
+}

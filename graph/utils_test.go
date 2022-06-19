@@ -3,6 +3,8 @@ package graph
 import (
 	"log"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestCreateGraph(t *testing.T) {
@@ -35,4 +37,21 @@ func TestCreateGraphArr(t *testing.T) {
 	AddEdgeArr(graph, 0, 1)
 	log.Println(graph)
 
+}
+
+func TestQue(t *testing.T) {
+	q := InitQue()
+	for i := 0; i < 10; i++ {
+		q.Insert(i)
+	}
+	require.Equal(t, 10, len(q))
+	log.Println(q)
+
+	for {
+		if v, ok := q.Pop(); ok {
+			log.Println(v)
+			continue
+		}
+		break
+	}
 }
