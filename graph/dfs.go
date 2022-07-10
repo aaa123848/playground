@@ -29,15 +29,14 @@ func (dws *dfsWithStack) dfs(start int) {
 	if dws.visited[start] {
 		return
 	}
+	dws.visited[start] = true
 	dws.stack.Insert(start)
 	for {
 		at, ok := dws.stack.Pop()
 		if !ok {
 			break
 		}
-		dws.visited[at] = true
 		dws.aProcess(at)
-
 		for _, to := range dws.graph[at] {
 			if !dws.visited[to] {
 				dws.visited[to] = true

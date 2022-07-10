@@ -1,4 +1,4 @@
-package main
+package two_sum
 
 import "log"
 
@@ -19,9 +19,4 @@ func twoSum(target int, subArr []int) bool {
 		}
 	}
 	return false
-}
-
-func main() {
-	log.Println(twoSum(21, []int{7, 9, 8, 3}))
-
 }
